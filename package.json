@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "react": "^19.2.4",
-    "lucide-react": "^0.563.0",
-    "@google/genai": "^1.40.0",
-    "react-router-dom": "^7.13.0",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "lucide-react": "0.474.0",
+    "@google/genai": "1.40.0",
+    "react-router-dom": "7.1.5"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

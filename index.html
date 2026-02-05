@@ -18,24 +18,56 @@
             color: #64748b;
             font-size: 1.125rem;
         }
+        #error-display {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #f87171;
+            z-index: 9999;
+            max-width: 90%;
+            word-break: break-all;
+            font-size: 12px;
+        }
     </style>
+    <script>
+        // Предотвращаем ошибку 'process is not defined' в браузере
+        window.process = { env: { NODE_ENV: 'production' } };
+        
+        // Перехват ошибок для отладки на Vercel
+        window.onerror = function(msg, url, line, col, error) {
+            const display = document.getElementById('error-display');
+            if (display) {
+                display.style.display = 'block';
+                display.innerText = 'Ошибка: ' + msg + ' (Строка: ' + line + ')';
+            }
+            return false;
+        };
+    </script>
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+    "react": "https://esm.sh/react@19.2.4",
+    "react-dom": "https://esm.sh/react-dom@19.2.4",
+    "react-dom/client": "https://esm.sh/react-dom@19.2.4/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.474.0",
+    "@google/genai": "https://esm.sh/@google/genai@1.40.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@7.1.5",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-slate-50 text-slate-900">
+    <div id="error-display"></div>
     <div id="root"></div>
-    <!-- Основной скрипт приложения -->
     <script type="module" src="index.tsx"></script>
 <script type="module" src="/index.tsx"></script>
 </body>
