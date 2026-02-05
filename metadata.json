@@ -1,0 +1,5 @@
+{
+  "name": "HTML Dynamic Transformer",
+  "description": "An advanced tool to upload HTML files, define dynamic variables using Gemini AI, and host transformed versions locally with persistent state.",
+  "requestFramePermissions": []
+}
